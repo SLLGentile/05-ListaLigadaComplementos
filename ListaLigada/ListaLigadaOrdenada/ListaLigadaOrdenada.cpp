@@ -129,24 +129,80 @@ void inserirElemento()
 	{
 		primeiro = novo;
 	}
+	else if (novo->valor < primeiro->valor) // procura o final da lista
+	{
+		NO* aux = primeiro;
+		primeiro = novo;
+		primeiro->prox = aux;
+	}
 	else
 	{
-		// procura o final da lista
 		NO* aux = primeiro;
-		while (aux->prox != NULL) {
+		while (aux->prox != NULL)
+		{
+			if (aux->prox->valor > novo->valor)
+			{
+				break;
+
+			}
 			aux = aux->prox;
 		}
-		aux->prox = novo;
+		if (aux->valor != novo->valor)
+		{
+			novo->prox = aux->prox;
+			aux->prox = novo;
+		}
 	}
 }
 
 void excluirElemento()
 {
+	NO* exc = (NO*)malloc(sizeof(NO));
+	if (exc == NULL)
+	{
+		return;
+	}
+	cout << "Digite o elemento que deseja excluir: \n";
+	cin >> exc->valor;
+	exc->prox = NULL;
 
+	NO* aux = primeiro;
+	while (aux->prox != NULL)
+	{
+		if (aux->prox->valor == exc->valor)
+		{
+			aux->prox = aux->prox->prox;
+			cout << "O numero foi excluido.";
+			free(exc);
+			break;
+		}
+		aux = aux->prox;
+	}
 }
 
 void buscarElemento()
 {
+	NO* bus = (NO*)malloc(sizeof(NO));
+	if (bus == NULL)
+	{
+		return;
+	}
+	cout << "Digite o elemento que deseja buscar: \n";
+	cin >> bus->valor;
+	bus->prox = NULL;
+
+	NO* aux = primeiro;
+	while (aux->prox != NULL)
+	{
+		if (aux->prox->valor == bus->valor)
+		{
+			
+			break;
+
+		}
+		aux = aux->prox;
+
+	}
 
 }
 
