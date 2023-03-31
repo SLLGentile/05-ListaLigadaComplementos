@@ -182,28 +182,26 @@ void excluirElemento()
 
 void buscarElemento()
 {
-	NO* bus = (NO*)malloc(sizeof(NO));
-	if (bus == NULL)
+	NO* busc = (NO*)malloc(sizeof(NO));
+	if (busc == NULL)
 	{
 		return;
 	}
 	cout << "Digite o elemento que deseja buscar: \n";
-	cin >> bus->valor;
-	bus->prox = NULL;
+	cin >> busc->valor;
+	busc->prox = NULL;
 
 	NO* aux = primeiro;
-	while (aux->prox != NULL)
-	{
-		if (aux->prox->valor == bus->valor)
-		{
-			
-			break;
 
+	while (aux != NULL)
+	{
+		if (aux->valor == busc->valor)
+		{
+			cout << "Elemento encontrado" << endl;
+			break;
 		}
 		aux = aux->prox;
-
-	}
-
+	}	
 }
 
 
